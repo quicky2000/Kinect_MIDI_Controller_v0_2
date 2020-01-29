@@ -1,0 +1,16 @@
+*.wav   # no data
+# no executeable
+tartini
+Makefile
+dialogs/ui_settingsdialog.h
+pitch.pro.user
+qrc_pitch.cpp
+.obj
+.debug_obj
+.debug_moc
+
+syntax: glob
+.moc/*
+*~
+*.qm
+#EOF
