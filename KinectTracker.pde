@@ -144,4 +144,3 @@ class KinectTracker
     threshold =  t;
   }
 }
-

@@ -1,4 +1,4 @@
-import rwmidi.*;
+//TO RESTORE import rwmidi.*;
 
 class MIDI
 {

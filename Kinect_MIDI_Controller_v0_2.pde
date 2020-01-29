@@ -1,11 +1,12 @@
-// Kinect MIDI Controller v0.2
+// Kinect MIDI Controller v0.2 //<>//
 // by Ben X Tan
 // http://kmidic.com
 // http://benxtan.com
 // Last modified on 02 May 2011
 
-import org.openkinect.*;
-import org.openkinect.processing.*;
+//TO RESTOREimport org.openkinect.*;
+//TO RESTOREimport org.openkinect.processing.*;
+import processing.video.*;
 
 // ----------------------------------------------------------------------------------------------------
 // Settings
@@ -24,7 +25,6 @@ int device = Devices.Generic;
 // Set these values to output a CC value based on the area of your hand
 int ccChannel = 0;
 int cc = 28;   // Set to -1 to disable
-
 // ----------------------------------------------------------------------------------------------------
 
 // Kinect
@@ -39,7 +39,7 @@ Grid grid;
 // MIDI
 MIDI midi;
 MIDI launchpadMIDI;
-String midiOutputDeviceName = MIDIDeviceUtils.getOutputDeviceName(midiOutputDeviceId);
+String midiOutputDeviceName = "";
 
 int currentIndex = -1;
 int currentPitch = -1;
@@ -49,8 +49,11 @@ boolean isMute = false;
 
 void setup()
 {
+  System.out.println("Setup");
+  RWMidi.m_applet = this;
+  midiOutputDeviceName = MIDIDeviceUtils.getOutputDeviceName(midiOutputDeviceId);
   size(640, 520);
-  
+   
   // Debugging
   MIDIDeviceUtils.printMIDIDevices();
   println("Output Device: " + midiOutputDeviceName);
@@ -117,7 +120,7 @@ void draw()
       + "Framerate: " + (int)frameRate + "  "
       + "Tilt: " + kinectAngle + "  "
       + "Threshold: " + kinectThreshold + " "
-      + "     "
+      + " Mouse(" + mouseX + "," + mouseY + ")"
       + "[M = Mute, Up/Down = Tilt, Left/Right = Threshold]", 10, 505);
   }
 
